@@ -1,0 +1,48 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="vidlog.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src='JS/turf.min.v4.7.3.js'></script>
+    <title> SHR FN40R Video Log </title>
+</head>
+
+<div id="loader"></div>
+<div id="loading">Loading ...</div>
+
+<div style="display:none;" id="floating-panel">
+    <button id="rotateScreen" title="Rotate Screen Display">&#128257;</button> RWYID:
+    <input type="text" id="rdwyid" align="left" size="8" title="Enter 8-digit roadway ID"> MP:
+    <input type="text" id="milepoint" align="left" size="5" title="Enter milepoint, leave blank for BMP">
+    <button id="goToMP" title="Go to this MP (Leave MP blank to go to BMP)">Go</button>
+    <button id="goBMP" title="Go to the BMP of this RoadID">BMP</button>
+    <button id="goEMP" title="Go to the EMP of this RoadID">EMP</button>
+    <label for="districtFilter">DistrictID:</label>
+    <select id="districtFilter" title="Filter roadway segments by DistrictID">
+        <option value="ALL">All Districts</option>
+    </select>
+    <label for="countyFilter">CountyName:</label>
+    <select id="countyFilter" title="Filter roadway segments by CountyName">
+        <option value="ALL">All Counties</option>
+    </select>
+    <label for="fn40rFilter">FN40R:</label>
+    <select id="fn40rFilter" title="Filter roadway segments by FN40R">
+        <option value="ALL">All Roads</option>
+        <option value="GREEN">Green (FN40R &gt;= 35)</option>
+        <option value="YELLOW">Yellow (30 &lt;= FN40R &lt; 35)</option>
+        <option value="RED">Red (FN40R &lt; 30)</option>
+    </select>
+    <!--<hr><input type="checkbox" id="ctrloc">
+  <label for="ctrloc">Center map to device location?</label>-->
+</div>
+<div style="display:none;" id="pano"></div>
+<div style="display:none;" id="divider"></div>
+<div style="display:none;" id="map"></div>
+
+<script src="JS/SHR_LINES_2025.js"></script>
+<script>var roads = SHR_LINES_2025;</script>
+<script src="JS/vidlog_v1.0.5.min_SHR_FN40R_v6.js"></script>
+
+<!-- Replace the value of the key parameter with your own API key. -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwE46uwe1DIG1G5HT5EyJbZFcQvtY10Io&callback=initialize">
+</script>
